@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ServerService } from 'src/app/services/server/server.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class SearchBarComponent {
   query = '';
   timeout: any = null;
   showSuggestions = false;
+  lastReq!: Subscription;
   constructor(private server: ServerService, private router: Router) {}
 
   loadSuggestions() {
@@ -21,9 +23,12 @@ export class SearchBarComponent {
     }
     if (this.timeout !== null) {
       clearTimeout(this.timeout);
+      if (this.lastReq !== undefined && this.lastReq !== null) {
+        this.lastReq.unsubscribe();
+      }
     }
     this.timeout = setTimeout(() => {
-      this.server
+      this.lastReq = this.server
         .getSuggestions(this.query.trim())
         .subscribe((responseData: any) => {
           this.suggestions.result = responseData['result'];

@@ -147,8 +147,8 @@ export class SearchResultsComponent {
     if (this.query === undefined || this.query.length < 1) {
       this.router.navigate(['/']);
     }
-    this.isLoading = true;
     this.route.queryParams.subscribe((s) => {
+      this.isLoading = true;
       this.query = s['query'];
       if (this.query !== undefined) {
         this.server

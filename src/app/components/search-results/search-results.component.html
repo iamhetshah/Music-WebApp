@@ -1,0 +1,17 @@
+<div class="w-full p-3 min-h-screen pb-56 bg-zinc-900 text-zinc-300">
+    <div class="w-full text-xl sm:text-3xl flex justify-center py-5 font-semibold">
+        <p *ngIf="this.query !== undefined" class="">Search results for
+            <b>
+                {{this.query}}
+            </b>
+        </p>
+        <p *ngIf="this.query === undefined" class="">Home
+        </p>
+    </div>
+    <div *ngIf="this.isLoading" class="w-full h-2/3 flex justify-center items-center p-4">
+        <i class="text-3xl fa-solid fa-circle-notch fa-spin"></i>
+    </div>
+    <div class="p-4 flex justify-center items-stretch gap-3 flex-wrap my-2" *ngIf="!this.isLoading">
+        <app-result-card *ngFor="let c of this.results" class="flex items-stretch" [details]="c"></app-result-card>
+    </div>
+</div>

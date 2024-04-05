@@ -1,0 +1,30 @@
+<div class="fixed w-full shadow-2xl shadow-zinc-700 bg-black bg-opacity-35 backdrop-blur bottom-0 px-2">
+    <div>
+        <input type="range" #seeking (input)="this.seek()"
+            class="appearance-none w-full bg-transparent [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-black [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-[10px] [&::-webkit-slider-thumb]:w-[10px] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-zinc-600" />
+    </div>
+    <div class="flex items-center justify-between">
+        <div class="flex gap-5 w-full items-center pb-2">
+            <img src="{{this.thumbnail.length > 0?this.thumbnail: 'https://i.pinimg.com/474x/20/de/e0/20dee0e3d4026e878cf1c62f4bbba93f.jpg'}}"
+                [alt]="this.title" class="w-[50px] aspect-square object-cover rounded">
+            <span *ngIf="!this.isLoading"
+                class="text-zinc-300 text-sm sm:text-[1rem] font-semibold max-w-72 overflow-x-hidden">{{this.title.length
+                > 20?this.title.substr(0, 21) + '...' : this.title}}</span>
+            <span *ngIf="this.isLoading" class="text-sm sm:text-[1rem] font-semibold max-w-72 overflow-hidden">
+                <i class="text-zinc-300 fa-solid fa-circle-notch fa-spin"></i>
+            </span>
+        </div>
+        <div>
+            <button type="button" *ngIf="!this.playing"
+                class="text-zinc-300 bg-transparent border-[1px] flex items-center justify-center p-2 w-10 h-10 rounded-full"
+                (click)="this.play()">
+                <i class="fa-solid fa-play"></i>
+            </button>
+            <button type="button" *ngIf="this.playing"
+                class="text-zinc-300 bg-transparent border-[1px] flex items-center justify-center p-2 w-10 h-10 rounded-full"
+                (click)="this.pause()">
+                <i class="fa-solid fa-pause"></i>
+            </button>
+        </div>
+    </div>
+</div>

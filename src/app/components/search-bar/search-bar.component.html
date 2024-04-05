@@ -1,0 +1,21 @@
+<div class="w-full bg-zinc-800 p-3 gap-1 flex justify-center items-center flex-col">
+    <div class="w-full flex justify-center sm:w-5/6 items-start">
+        <input type="text" name="query" (input)="loadSuggestions()" (focus)="this.showSuggestions = true"
+            [(ngModel)]="query"
+            class="bg-transparent w-full rounded outline-none text-zinc-300 focus:ring-1 focus:ring-gray-400 p-3"
+            placeholder="Search a song...">
+        <button type="button"
+            class="p-3 rounded focus:ring-1 focus:ring-gray-400 outline-none active:scale-95 duration-100"
+            (click)="search(this.query)">
+            <i class="fa-solid fa-magnifying-glass text-zinc-300"></i>
+        </button>
+    </div>
+    <div class="first:mt-2 w-full sm:w-5/6" [ngStyle]="{'display': !this.showSuggestions?'none':'initial'}">
+        <button *ngFor="let s of this.suggestions.result" type="button"
+            class="flex gap-3 items-center p-2 focus:ring-1 focus:ring-gray-400 outline-none rounded text-zinc-300"
+            (click)="search(s)">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>{{s}}</span>
+        </button>
+    </div>
+</div>

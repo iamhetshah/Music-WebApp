@@ -1,0 +1,20 @@
+.search-results {
+    padding: 20px 20px 200px 20px;
+    min-height: 95vh;
+    background-color: var(--primary);
+}
+
+.result-cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.loading {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

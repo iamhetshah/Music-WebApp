@@ -1,0 +1,10 @@
+<div role="button" tabindex="0" (click)="this.audio.change(this.details)"
+    class="p-4 cursor-pointer bg-zinc-800 bg-opacity-65 active:bg-opacity-75 active:bg-zinc-950 duration-100 rounded border-[1px] sm:w-96 max-w-screen-sm border-gray-500">
+    <div class="relative">
+        <img [src]="this.details.thumbnail" alt="" class="rounded text-zinc-300 aspect-video object-cover">
+        <span class="bg-black p-1 font-semibold rounded bg-opacity-75 absolute bottom-1 right-1">
+            {{this.details.duration}}
+        </span>
+    </div>
+    <p class="mt-2">{{this.details.title}}</p>
+</div>

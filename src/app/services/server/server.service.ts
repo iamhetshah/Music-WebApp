@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ServerService {
-  private baseUrl = 'http://127.0.0.1:8000/api/';
+  private baseUrl = 'https://evil-dryers-push.loca.lt/api';
   // private baseUrl = 'api/';
   isAuthenticated = false;
   previousQuery = '';
